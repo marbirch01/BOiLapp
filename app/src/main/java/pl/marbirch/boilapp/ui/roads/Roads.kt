@@ -20,5 +20,13 @@ object Roads {
     const val IncorrectCpmThirdAnswer = "IncorrectCpmThirdAnswer"
     const val IncorrectCpmFourthAnswer = "IncorrectCpmFourthAnswer"
     const val IncorrectCpmFifthAnswer = "IncorrectCpmFifthAnswer"
-
+    const val cpmCostFirstStep = "cpmCostFirstStep"
+    const val cpmCostSecondStep = "cpmCostSecondStep"
+    const val cpmCostThirdStep = "cpmCostThirdStep"
+    const val cpmCostFourthStep = "cpmCostFourthStep"
+    const val cpmCostFifthStep = "cpmCostFifthStep"
+    const val cpmCostSixthStep = "cpmCostSixthStep"
+    const val cpmCostSeventhStep = "cpmCostSeventhStep"
+    const val IncorrectCpmCostAnswer = "IncorrectCpmCostAnswer"
+    const val FinishedOpenTaskScreen = "FinishedOpenTaskScreen"
 }

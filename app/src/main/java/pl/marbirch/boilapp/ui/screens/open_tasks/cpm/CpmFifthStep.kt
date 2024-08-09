@@ -77,7 +77,7 @@ fun CpmFifthStep (navigationController: NavController, modifier: Modifier = Modi
             Spacer(modifier = Modifier.padding(35.dp))
             AppButton(modifier = Modifier.size(290.dp, 73.dp), text = "Sprawdź odpowiedź!", textColor = Color.LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp), onClick = {
                 if (answer1.lowercase() == correctAns[0] && answer2 == correctAns[1]){
-                    navigationController.navigate(Roads.openTasksScreen)
+                    navigationController.navigate(Roads.FinishedOpenTaskScreen)
                 }else{
                    navigationController.navigate(Roads.IncorrectCpmFifthAnswer)
                 }

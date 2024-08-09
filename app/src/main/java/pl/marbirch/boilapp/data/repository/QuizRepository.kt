@@ -22,7 +22,7 @@ class QuizRepository {
 
     suspend fun startQuiz(questionsList: List<QuizQuestions>){
         updateQuizState(QuizState.Loading)
-        delay(4000)
+        delay(3000)
         if (leftQuestions.isEmpty()){
             leftQuestions.addAll(questionsList)
             questionsListSize = questionsList.size
