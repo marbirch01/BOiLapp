@@ -249,7 +249,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
             })
         }
         composable(Roads.FinishedOpenTaskScreen){
-            FinishedOpenTaskScreen(onRetry = {
+            FinishedOpenTaskScreen(onEnd = {
                 navigationController.navigate(Roads.openTasksScreen)
             })
         }
