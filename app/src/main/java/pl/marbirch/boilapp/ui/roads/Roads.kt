@@ -29,4 +29,10 @@ object Roads {
     const val cpmCostSeventhStep = "cpmCostSeventhStep"
     const val IncorrectCpmCostAnswer = "IncorrectCpmCostAnswer"
     const val FinishedOpenTaskScreen = "FinishedOpenTaskScreen"
+    const val doapFirstStep = "doapFirstStep"
+    const val doapSecondStep = "doapSecondStep"
+    const val doapThirdStep = "doapThirdStep"
+    const val doapFourthStep = "doapFourthStep"
+    const val doapFifthStep = "doapFifthStep"
+    const val doapSixthStep = "doapSixthStep"
 }

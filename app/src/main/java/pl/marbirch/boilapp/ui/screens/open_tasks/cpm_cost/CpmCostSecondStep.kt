@@ -97,7 +97,7 @@ fun CpmCostSecondStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifi
             )
             TextField(
                 value = answer2,
-                onValueChange = { answer2 = it },)
+                onValueChange = { answer2 = it })
             Text(modifier = Modifier.padding(vertical = 15.dp), color = Color.Black, textAlign = TextAlign.Center, text = "Nowy czas realizacji przedsięwzięcia:", style = Typography.headlineLarge.copy(fontSize = 28.sp))
             Image(
                 painter = painterResource(id = R.drawable.cpmcost3),
@@ -107,7 +107,7 @@ fun CpmCostSecondStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifi
             )
             TextField(
                 value = answer3,
-                onValueChange = { answer3 = it },)
+                onValueChange = { answer3 = it })
             Text(modifier = Modifier.padding(vertical = 15.dp), color = Color.Black, textAlign = TextAlign.Center, text = "Koszty przyspieszenia realizacji przedsięwzięcia:", style = Typography.headlineLarge.copy(fontSize = 28.sp))
             Image(
                 painter = painterResource(id = R.drawable.cpmcost4),
@@ -117,7 +117,7 @@ fun CpmCostSecondStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifi
             )
             TextField(
                 value = answer4,
-                onValueChange = { answer4 = it },)
+                onValueChange = { answer4 = it })
             Spacer(modifier = Modifier.padding(20.dp))
             AppButton(modifier = Modifier.size(290.dp, 73.dp), text = "Sprawdź odpowiedź!", textColor = Color.LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp), onClick = {
                 val isCorrect = (answer1 == correctAns[0] && answer2 == correctAns[1] && answer3 == correctAns[2] && answer4 == correctAns[3])

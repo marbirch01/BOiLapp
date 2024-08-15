@@ -84,15 +84,15 @@ fun CpmCostFirstStep(onCheckAns: (Boolean) -> Unit,modifier: Modifier = Modifier
             Text(modifier = Modifier.padding(vertical = 15.dp), color = Color.Black, text = "1 - 4 :", style = Typography.headlineLarge.copy(fontSize = 28.sp))
             TextField(
                 value = answer1,
-                onValueChange = { answer1 = it },)
+                onValueChange = { answer1 = it })
             Text(modifier = Modifier.padding(vertical = 15.dp), color = Color.Black, text = "4 - 5 :", style = Typography.headlineLarge.copy(fontSize = 28.sp))
             TextField(
                 value = answer2,
-                onValueChange = { answer2 = it },)
+                onValueChange = { answer2 = it })
             Text(modifier = Modifier.padding(vertical = 15.dp), color = Color.Black, text = "5 - 6 :", style = Typography.headlineLarge.copy(fontSize = 28.sp))
             TextField(
                 value = answer3,
-                onValueChange = { answer3 = it },)
+                onValueChange = { answer3 = it })
             Spacer(modifier = Modifier.padding(20.dp))
             AppButton(modifier = Modifier.size(290.dp, 73.dp), text = "Sprawdź odpowiedź!", textColor = Color.LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp), onClick = {
                 val isCorrect = (answer1 == correctAns[0] && answer2 == correctAns[1] && answer3 == correctAns[2])
