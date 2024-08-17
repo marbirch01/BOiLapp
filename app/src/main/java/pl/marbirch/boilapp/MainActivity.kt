@@ -42,6 +42,12 @@ import pl.marbirch.boilapp.ui.screens.open_tasks.doap.DoapFourthStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.doap.DoapSecondStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.doap.DoapSixthStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.doap.DoapThirdStep
+import pl.marbirch.boilapp.ui.screens.open_tasks.wiel.ZadWielFifthStep
+import pl.marbirch.boilapp.ui.screens.open_tasks.wiel.ZadWielFirstStep
+import pl.marbirch.boilapp.ui.screens.open_tasks.wiel.ZadWielFourthStep
+import pl.marbirch.boilapp.ui.screens.open_tasks.wiel.ZadWielSecondStep
+import pl.marbirch.boilapp.ui.screens.open_tasks.wiel.ZadWielSixthStep
+import pl.marbirch.boilapp.ui.screens.open_tasks.wiel.ZadWielThirdStep
 import pl.marbirch.boilapp.ui.screens.quiz.QuizScreen
 import pl.marbirch.boilapp.ui.screens.quiz.StartScreen
 import pl.marbirch.boilapp.ui.screens.theory.CpmCostMethod
@@ -153,9 +159,11 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
             SelectOpenTaskScreen(
                 onCpm = { navigationController.navigate(Roads.cpmFirstStep) },
                 onCpmCost = {navigationController.navigate(Roads.cpmCostFirstStep)},
-                onDoap = {navigationController.navigate(Roads.doapFirstStep)}
+                onDoap = {navigationController.navigate(Roads.doapFirstStep)},
+                onOptPrzy = {navigationController.navigate(Roads.zadWielFirstStep)}
             )
         }
+        //Cpm
         composable(Roads.cpmFirstStep){
             CpmFirstStepScreen(navigationController = navigationController)
         }
@@ -187,6 +195,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
             IncorrectCpmFifthAnswer(navigationController = navigationController)
         }
 
+        //CPM-COST
         composable(Roads.cpmCostFirstStep){
             CpmCostFirstStep(onCheckAns = {isCorrect ->
                 if (isCorrect) {
@@ -261,6 +270,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
             })
         }
 
+        //Dobór optymalnego asortymentu produkcji
         composable(Roads.doapFirstStep){
             DoapFirstStep(onCheckAns = {isCorrect ->
                 if(isCorrect){
@@ -308,6 +318,62 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
         }
         composable(Roads.doapSixthStep){
             DoapSixthStep(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.FinishedOpenTaskScreen)
+                }else{
+                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                }
+            })
+        }
+
+        //Optymalizacja przychodów
+        composable(Roads.zadWielFirstStep){
+            ZadWielFirstStep(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.zadWielSecondStep)
+                }else{
+                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                }
+            })
+        }
+        composable(Roads.zadWielSecondStep){
+            ZadWielSecondStep(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.zadWielThirdStep)
+                }else{
+                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                }
+            })
+        }
+        composable(Roads.zadWielThirdStep){
+            ZadWielThirdStep(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.zadWielFourthStep)
+                }else{
+                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                }
+            })
+        }
+        composable(Roads.zadWielFourthStep){
+            ZadWielFourthStep(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.zadWielFifthStep)
+                }else{
+                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                }
+            })
+        }
+        composable(Roads.zadWielFifthStep){
+            ZadWielFifthStep(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.zadWielSixthStep)
+                }else{
+                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                }
+            })
+        }
+        composable(Roads.zadWielSixthStep){
+            ZadWielSixthStep(onCheckAns = {isCorrect ->
                 if(isCorrect){
                     navigationController.navigate(Roads.FinishedOpenTaskScreen)
                 }else{

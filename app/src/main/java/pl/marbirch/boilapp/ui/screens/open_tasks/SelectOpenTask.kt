@@ -35,7 +35,6 @@ fun SelectOpenTaskScreen(
     onCpm: () -> Unit = {},
     onCpmCost: () -> Unit = {},
     onDoap: () -> Unit = {},
-    onOptRoz: () -> Unit = {},
     onOptPrzy: () -> Unit = {},
 ) {
     Surface(modifier = Modifier
@@ -52,8 +51,6 @@ fun SelectOpenTaskScreen(
             AppButton(modifier = Modifier.size(290.dp, 73.dp) ,text = "Metoda CPM-COST", onClick = onCpmCost, textColor = LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp))
             Spacer(modifier = Modifier.padding(17.dp))
             AppButton(modifier = Modifier.size(290.dp, 73.dp) ,text = "Dobór optymalnego asortymentu produkcji", onClick = onDoap, textColor = LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp))
-            Spacer(modifier = Modifier.padding(17.dp))
-            AppButton(modifier = Modifier.size(290.dp, 73.dp) ,text = "Optymalizacja rozkroju", textColor = LightGray, onClick = onOptRoz, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp))
             Spacer(modifier = Modifier.padding(17.dp))
             AppButton(modifier = Modifier.size(290.dp, 73.dp) ,text = "Optymalizacja przychodów", textColor = LightGray, onClick = onOptPrzy, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp))
         }

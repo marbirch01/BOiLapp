@@ -1,10 +1,12 @@
 package pl.marbirch.boilapp.ui.screens.open_tasks.doap
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -84,7 +86,7 @@ fun DoapSecondStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifier)
                 text = "Etap 2: Wyznacz funkcję celu:"
             )
             Spacer(modifier = Modifier.padding(30.dp))
-            Row {
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                 Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp, top = 12.dp),
                     color = Color.Black,
                     fontSize = 20.sp,
@@ -94,9 +96,9 @@ fun DoapSecondStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifier)
                         append(AnnotatedStrDoap("1", 12.sp))
                         append(" , ")
                         append(AnnotatedStrDoap("2", 12.sp))
-                        append(" ) = ")
+                        append(" ) =")
                     })
-                TextField(modifier = Modifier.size(53.dp, 53.dp), value = answer1, onValueChange = {answer1 = it})
+                TextField(modifier = Modifier.size(45.dp, 53.dp), value = answer1, onValueChange = {answer1 = it})
                 Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp, top = 12.dp),
                     color = Color.Black,
                     fontSize = 20.sp,
@@ -105,7 +107,7 @@ fun DoapSecondStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifier)
                         append(AnnotatedStrDoap("1", 12.sp))
                         append(" +")
                     })
-                TextField(modifier = Modifier.size(53.dp, 53.dp), value = answer2, onValueChange = {answer2 = it})
+                TextField(modifier = Modifier.size(45.dp, 53.dp), value = answer2, onValueChange = {answer2 = it})
                 Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp, top = 12.dp),
                     color = Color.Black,
                     fontSize = 20.sp,
