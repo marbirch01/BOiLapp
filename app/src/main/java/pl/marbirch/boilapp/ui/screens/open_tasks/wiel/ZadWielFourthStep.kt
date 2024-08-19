@@ -1,5 +1,6 @@
 package pl.marbirch.boilapp.ui.screens.open_tasks.wiel
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,9 +21,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import pl.marbirch.boilapp.R
 import pl.marbirch.boilapp.ui.default_component.AppButton
 import pl.marbirch.boilapp.ui.theme.Cream
 import pl.marbirch.boilapp.ui.theme.Typography
@@ -39,15 +43,56 @@ fun ZadWielFourthStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifi
             .verticalScroll(scrollState)
             .padding(horizontal = 25.dp, vertical = 30.dp),
             horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(modifier = Modifier.padding(vertical = 20.dp),
+                color = Color.Black,
+                fontSize = 17.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.titleMedium,
+                text = "Następnym etapem jest ustawienie danych, które znajdują się po \"Lewej stronie\" i związane są z ograniczeniami. Uzupełnij komórki zgonie z ustalonymi wcześniej ograniczeniami, które znajdują się poniżej")
+            Spacer(modifier = Modifier.padding(10.dp))
+            Text(modifier = Modifier.padding(top = 15.dp),
+                color = Color.Black,
+                fontSize = 35.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.headlineLarge,
+                text = "N + M ≥ 4")
+            Text(modifier = Modifier.padding(top = 15.dp),
+                color = Color.Black,
+                fontSize = 35.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.headlineLarge,
+                text = "N ≤ 4")
+            Text(modifier = Modifier.padding(top = 15.dp),
+                color = Color.Black,
+                fontSize = 35.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.headlineLarge,
+                text = "M + 1,5 N ≥ 12")
+            Image(
+                painter = painterResource(id = R.drawable.zadwiel4),
+                contentDescription = "doap2ot",
+                modifier = Modifier
+                    .padding(start = 5.dp)
+                    .size(400.dp, 280.dp)
+            )
+            Text(modifier = Modifier.padding(vertical = 20.dp),
+                color = Color.Black,
+                fontSize = 17.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.titleMedium,
+                text = "Ustaw wszystkie dane znajdujące się po \"Lewej stronie\" zgodnie z przykładem pokazującym przykładowe uzupełnienie jednej z komórek. Każda z komórek odpowiada wzorowi konkretnego ograniczenia.")
+            Text(modifier = Modifier.padding(vertical = 20.dp),
+                color = Color.Black,
+                fontSize = 17.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.titleMedium,
+                text = "Jeżeli uzupełniłeś swój plik zgodnie ze wzorem przejć do następnego etapu.")
             Spacer(modifier = Modifier.padding(15.dp))
-            Text(text = "git4")
-            Spacer(modifier = Modifier.padding(15.dp))
-            TextField(value = answer1, onValueChange = {answer1 = it})
-            Spacer(modifier = Modifier.padding(15.dp))
-            AppButton(modifier = Modifier.size(290.dp, 73.dp), text = "Sprawdź odpowiedź!", textColor = Color.LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp), onClick = {
-                val isCorrect = (answer1 == "A")
+            AppButton(modifier = Modifier.size(290.dp, 73.dp), text = "Natępny etap!", textColor = Color.LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp), onClick = {
+                val isCorrect = true
                 onCheckAns(isCorrect)
             })
+            Spacer(modifier = Modifier.padding(25.dp))
         }
     }
 }
@@ -55,5 +100,5 @@ fun ZadWielFourthStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifi
 @Preview
 @Composable
 private fun ZadWielFourthStepPreview() {
-    ZadWielFirstStep(onCheckAns = {})
+    ZadWielFourthStep(onCheckAns = {})
 }

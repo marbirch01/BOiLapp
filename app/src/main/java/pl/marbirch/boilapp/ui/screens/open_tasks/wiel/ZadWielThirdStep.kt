@@ -1,5 +1,6 @@
 package pl.marbirch.boilapp.ui.screens.open_tasks.wiel
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,9 +21,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import pl.marbirch.boilapp.R
 import pl.marbirch.boilapp.ui.default_component.AppButton
 import pl.marbirch.boilapp.ui.theme.Cream
 import pl.marbirch.boilapp.ui.theme.Typography
@@ -39,15 +43,64 @@ fun ZadWielThirdStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifie
             .verticalScroll(scrollState)
             .padding(horizontal = 25.dp, vertical = 30.dp),
             horizontalAlignment = Alignment.CenterHorizontally) {
-            Spacer(modifier = Modifier.padding(15.dp))
-            Text(text = "git3")
-            Spacer(modifier = Modifier.padding(15.dp))
-            TextField(value = answer1, onValueChange = {answer1 = it})
-            Spacer(modifier = Modifier.padding(15.dp))
-            AppButton(modifier = Modifier.size(290.dp, 73.dp), text = "Sprawdź odpowiedź!", textColor = Color.LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp), onClick = {
-                val isCorrect = (answer1 == "A")
+            Text(modifier = Modifier.padding(vertical = 15.dp),
+                color = Color.Black,
+                fontSize = 17.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.titleMedium,
+                text = "Ostateczny wzór funkcji ma postać:")
+            Image(
+                painter = painterResource(id = R.drawable.zadwiel1),
+                contentDescription = "zadwiel3",
+                modifier = Modifier
+                    .padding(start = 5.dp)
+                    .size(410.dp, 40.dp)
+            )
+            Text(modifier = Modifier.padding(vertical = 15.dp),
+                color = Color.Black,
+                fontSize = 17.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.titleMedium,
+                text = "Po przekształceniu wzoru otrzymujemy:")
+            Image(
+                painter = painterResource(id = R.drawable.zadwiel3),
+                contentDescription = "zadwiel3",
+                modifier = Modifier
+                    .padding(start = 5.dp)
+                    .size(260.dp, 40.dp)
+            )
+            Text(modifier = Modifier.padding(vertical = 20.dp),
+                color = Color.Black,
+                fontSize = 17.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.titleMedium,
+                text = "Do wykonania następnych kroków zadania niezbędny będzie arkusz kalkulacyjny Exel. Otwórz aplikację oraz utwórz nowy plik Exel. Poszczególne komórki ustaw według schematu, widocznego na poniższej grafice: ")
+            Spacer(modifier = Modifier.padding(10.dp))
+            Image(
+                painter = painterResource(id = R.drawable.zadwiel2),
+                contentDescription = "zadwiel1",
+                modifier = Modifier
+                    .padding(start = 5.dp)
+                    .size(400.dp, 150.dp)
+            )
+            Text(modifier = Modifier.padding(vertical = 20.dp),
+                color = Color.Black,
+                fontSize = 17.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.titleMedium,
+                text = "Wprowadz dane związane z ograniczeniami w zadaniu. Uzupełnij komórkę związaną z funkcją celu zgodnie z przykładem powyżej używając sumy iloczynów.")
+            Text(modifier = Modifier.padding(vertical = 20.dp),
+                color = Color.Black,
+                fontSize = 17.sp,
+                textAlign = TextAlign.Center,
+                style = Typography.titleMedium,
+                text = "Jeżeli uzupełniłeś swój plik zgodnie ze wzorem przejć do następnego etapu.")
+            Spacer(modifier = Modifier.padding(20.dp))
+            AppButton(modifier = Modifier.size(290.dp, 73.dp), text = "Następny etap!", textColor = Color.LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp), onClick = {
+                val isCorrect = true
                 onCheckAns(isCorrect)
             })
+            Spacer(modifier = Modifier.padding(25.dp))
         }
     }
 }
@@ -55,5 +108,5 @@ fun ZadWielThirdStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifie
 @Preview
 @Composable
 private fun ZadWielThirdStepPreview() {
-    ZadWielFirstStep(onCheckAns = {})
+    ZadWielThirdStep(onCheckAns = {})
 }
