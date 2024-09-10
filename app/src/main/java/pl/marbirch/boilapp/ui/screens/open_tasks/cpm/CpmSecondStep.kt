@@ -36,7 +36,7 @@ import pl.marbirch.boilapp.ui.theme.Red
 import pl.marbirch.boilapp.ui.theme.Typography
 
 @Composable
-fun CpmSecondStep(navigationController: NavController, modifier: Modifier = Modifier) {
+fun CpmSecondStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     var answer1 by remember { mutableStateOf("") }
     var answer2 by remember { mutableStateOf("") }
@@ -111,40 +111,14 @@ fun CpmSecondStep(navigationController: NavController, modifier: Modifier = Modi
                 value = answer9,
                 onValueChange = { answer9 = it },)
             AppButton(modifier = Modifier.size(290.dp, 73.dp), text = "Sprawdź odpowiedź!", textColor = Color.LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp), onClick = {
-                if (answer1 == correctAns[0] && answer2 == correctAns[1] && answer3 == correctAns[2] && answer4 == correctAns[3] && answer5 == correctAns[4] && answer6 == correctAns[5] && answer7 == correctAns[6] && answer8 == correctAns[7] && answer9 == correctAns[8]){
-                    navigationController.navigate(Roads.cpmThirdStep)
-                }else{
-                    navigationController.navigate(Roads.IncorrectCpmSecondAnswer)
-                }
+                val isCorrect =  (answer1 == correctAns[0] && answer2 == correctAns[1] && answer3 == correctAns[2] && answer4 == correctAns[3] && answer5 == correctAns[4] && answer6 == correctAns[5] && answer7 == correctAns[6] && answer8 == correctAns[7] && answer9 == correctAns[8])
+                onCheckAns(isCorrect)
             })
             Spacer(modifier = Modifier.padding(35.dp))
         }
     }
 }
 
-@Composable
-fun IncorrectCpmSecondAnswer(navigationController: NavController, modifier: Modifier = Modifier) {
-    Surface(modifier = Modifier
-        .clip(shape = RoundedCornerShape(topStart = 26.dp, topEnd = 26.dp))
-        .fillMaxSize(), color = Cream) {
-        Column (modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 40.dp, vertical = 30.dp),
-            horizontalAlignment = Alignment.CenterHorizontally){
-            Spacer(modifier = Modifier.padding(100.dp))
-            Text(style = Typography.headlineLarge, textAlign = TextAlign.Center, text = "Niepoprawna", color = Red)
-            Text(style = Typography.headlineLarge, textAlign = TextAlign.Center, text = "odpowiedz!", color = Red)
-            Spacer(modifier = Modifier.padding(120.dp))
-            AppButton(
-                modifier = Modifier.size(290.dp, 73.dp),
-                text = "Wróc do drugiego etapu!",
-                textColor = LightGray,
-                textStyle = Typography.headlineLarge.copy(fontSize = 20.sp),
-                onClick = { navigationController.navigate(Roads.cpmSecondStep) }
-            )
-        }
-    }
-}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

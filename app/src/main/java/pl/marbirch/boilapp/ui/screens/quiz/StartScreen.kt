@@ -56,7 +56,6 @@ fun StartScreen(
     }
 }
 
-
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun StartScreenPreview() {

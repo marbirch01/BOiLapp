@@ -1,14 +1,10 @@
-package pl.marbirch.boilapp.ui.screens.open_tasks.cpm_cost
-
+package pl.marbirch.boilapp.ui.screens.open_tasks
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,15 +12,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pl.marbirch.boilapp.ui.default_component.AppButton
-import pl.marbirch.boilapp.ui.roads.Roads
 import pl.marbirch.boilapp.ui.theme.Cream
 import pl.marbirch.boilapp.ui.theme.LightGray
 import pl.marbirch.boilapp.ui.theme.Red
 import pl.marbirch.boilapp.ui.theme.Typography
-
 
 @Composable
 fun IncorrectCpmCostAnswer(onRetry: () -> Unit, modifier: Modifier = Modifier) {
@@ -62,5 +57,11 @@ fun IncorrectCpmCostAnswer(onRetry: () -> Unit, modifier: Modifier = Modifier) {
             )
         }
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun IncorrectOpenTasksAnswer() {
+    IncorrectCpmCostAnswer(onRetry = {})
 }
 

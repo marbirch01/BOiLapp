@@ -1,6 +1,5 @@
 package pl.marbirch.boilapp.data.model
 
-
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -19,3 +18,10 @@ data class QuizQuestions(
     @SerialName("correctAnswer")
     val correctAnswer: String
 )
+
+
+
+
+
+
+

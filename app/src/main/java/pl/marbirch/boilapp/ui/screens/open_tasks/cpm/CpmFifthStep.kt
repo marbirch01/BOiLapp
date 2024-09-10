@@ -36,7 +36,7 @@ import pl.marbirch.boilapp.ui.theme.Red
 import pl.marbirch.boilapp.ui.theme.Typography
 
 @Composable
-fun CpmFifthStep (navigationController: NavController, modifier: Modifier = Modifier) {
+fun CpmFifthStep (onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     var answer1 by remember { mutableStateOf("") }
     var answer2 by remember { mutableStateOf("") }
@@ -76,11 +76,8 @@ fun CpmFifthStep (navigationController: NavController, modifier: Modifier = Modi
                 onValueChange = { answer2 = it },)
             Spacer(modifier = Modifier.padding(35.dp))
             AppButton(modifier = Modifier.size(290.dp, 73.dp), text = "Sprawdź odpowiedź!", textColor = Color.LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp), onClick = {
-                if (answer1.lowercase() == correctAns[0] && answer2 == correctAns[1]){
-                    navigationController.navigate(Roads.FinishedOpenTaskScreen)
-                }else{
-                   navigationController.navigate(Roads.IncorrectCpmFifthAnswer)
-                }
+                val isCorrect = (answer1.lowercase() == correctAns[0] && answer2 == correctAns[1])
+                onCheckAns(isCorrect)
             })
             Spacer(modifier = Modifier.padding(35.dp))
         }

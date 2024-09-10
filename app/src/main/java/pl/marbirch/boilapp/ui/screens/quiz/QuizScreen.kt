@@ -310,7 +310,7 @@ private fun RunningQuizScreenPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun CorrectAnsweredQuizScreenPreview() {
     RunningQuizScreen(
@@ -335,7 +335,7 @@ private fun CorrectAnsweredQuizScreenPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun InCorrectAnsweredQuizScreenPreview() {
     RunningQuizScreen(

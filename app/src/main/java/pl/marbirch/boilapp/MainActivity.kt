@@ -23,11 +23,6 @@ import pl.marbirch.boilapp.ui.screens.open_tasks.cpm.CpmFirstStepScreen
 import pl.marbirch.boilapp.ui.screens.open_tasks.cpm.CpmSecondStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.cpm.CpmThirdStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.cpm.CpmFourthStep
-import pl.marbirch.boilapp.ui.screens.open_tasks.cpm.IncorrectCpmFifthAnswer
-import pl.marbirch.boilapp.ui.screens.open_tasks.cpm.IncorrectCpmFirstAnswer
-import pl.marbirch.boilapp.ui.screens.open_tasks.cpm.IncorrectCpmFourthAnswer
-import pl.marbirch.boilapp.ui.screens.open_tasks.cpm.IncorrectCpmSecondAnswer
-import pl.marbirch.boilapp.ui.screens.open_tasks.cpm.IncorrectCpmThirdAnswer
 import pl.marbirch.boilapp.ui.screens.open_tasks.cpm_cost.CpmCostFifthStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.cpm_cost.CpmCostFirstStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.cpm_cost.CpmCostFourthStep
@@ -35,7 +30,7 @@ import pl.marbirch.boilapp.ui.screens.open_tasks.cpm_cost.CpmCostSecondStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.cpm_cost.CpmCostSeventhStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.cpm_cost.CpmCostSixthStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.cpm_cost.CpmCostThirdStep
-import pl.marbirch.boilapp.ui.screens.open_tasks.cpm_cost.IncorrectCpmCostAnswer
+import pl.marbirch.boilapp.ui.screens.open_tasks.IncorrectCpmCostAnswer
 import pl.marbirch.boilapp.ui.screens.open_tasks.doap.DoapFifthStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.doap.DoapFirstStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.doap.DoapFourthStep
@@ -163,36 +158,52 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 onOptPrzy = {navigationController.navigate(Roads.zadWielFirstStep)}
             )
         }
-        //Cpm
+
+        //CPM
         composable(Roads.cpmFirstStep){
-            CpmFirstStepScreen(navigationController = navigationController)
+            CpmFirstStepScreen(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.cpmSecondStep)
+                }else{
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
+                }
+            })
         }
         composable(Roads.cpmSecondStep){
-            CpmSecondStep(navigationController = navigationController)
+            CpmSecondStep(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.cpmThirdStep)
+                }else{
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
+                }
+            })
         }
         composable(Roads.cpmThirdStep){
-            CpmThirdStep(navigationController = navigationController)
+            CpmThirdStep(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.cpmFourthStep)
+                }else{
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
+                }
+            })
         }
         composable(Roads.cpmFourthStep){
-            CpmFourthStep(navigationController = navigationController)
+            CpmFourthStep(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.cpmFifthStep)
+                }else{
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
+                }
+            })
         }
         composable(Roads.cpmFifthStep){
-            CpmFifthStep(navigationController = navigationController)
-        }
-        composable(Roads.IncorrectCpmFirstAnswer){
-            IncorrectCpmFirstAnswer(navigationController = navigationController)
-        }
-        composable(Roads.IncorrectCpmSecondAnswer){
-            IncorrectCpmSecondAnswer(navigationController = navigationController)
-        }
-        composable(Roads.IncorrectCpmThirdAnswer){
-            IncorrectCpmThirdAnswer(navigationController = navigationController)
-        }
-        composable(Roads.IncorrectCpmFourthAnswer){
-            IncorrectCpmFourthAnswer(navigationController = navigationController)
-        }
-        composable(Roads.IncorrectCpmFifthAnswer){
-            IncorrectCpmFifthAnswer(navigationController = navigationController)
+            CpmFifthStep(onCheckAns = {isCorrect ->
+                if(isCorrect){
+                    navigationController.navigate(Roads.FinishedOpenTaskScreen)
+                }else{
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
+                }
+            })
         }
 
         //CPM-COST
@@ -201,7 +212,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if (isCorrect) {
                     navigationController.navigate(Roads.cpmCostSecondStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -210,7 +221,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if (isCorrect) {
                     navigationController.navigate(Roads.cpmCostThirdStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -219,7 +230,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if (isCorrect) {
                     navigationController.navigate(Roads.cpmCostFourthStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -228,7 +239,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if (isCorrect) {
                     navigationController.navigate(Roads.cpmCostFifthStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -237,7 +248,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if (isCorrect) {
                     navigationController.navigate(Roads.cpmCostSixthStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -246,7 +257,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if (isCorrect) {
                     navigationController.navigate(Roads.cpmCostSeventhStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -255,11 +266,11 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if (isCorrect) {
                     navigationController.navigate(Roads.FinishedOpenTaskScreen)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
-        composable(Roads.IncorrectCpmCostAnswer){
+        composable(Roads.IncorrectOpenTaskAnswer){
             IncorrectCpmCostAnswer(onRetry = {
                 navigationController.popBackStack()
             })
@@ -276,7 +287,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.doapSecondStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -285,7 +296,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.doapThirdStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -294,7 +305,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.doapFourthStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -303,7 +314,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.doapFifthStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -312,7 +323,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.doapSixthStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -321,7 +332,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.FinishedOpenTaskScreen)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -332,7 +343,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.zadWielSecondStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -341,7 +352,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.zadWielThirdStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -350,7 +361,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.zadWielFourthStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -359,7 +370,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.zadWielFifthStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -368,7 +379,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.zadWielSixthStep)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }
@@ -377,7 +388,7 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 if(isCorrect){
                     navigationController.navigate(Roads.FinishedOpenTaskScreen)
                 }else{
-                    navigationController.navigate(Roads.IncorrectCpmCostAnswer)
+                    navigationController.navigate(Roads.IncorrectOpenTaskAnswer)
                 }
             })
         }

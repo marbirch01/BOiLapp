@@ -33,7 +33,7 @@ object Roads {
     const val cpmCostFifthStep = "cpmCostFifthStep"
     const val cpmCostSixthStep = "cpmCostSixthStep"
     const val cpmCostSeventhStep = "cpmCostSeventhStep"
-    const val IncorrectCpmCostAnswer = "IncorrectCpmCostAnswer"
+    const val IncorrectOpenTaskAnswer = "IncorrectOpenTaskAnswer"
     const val FinishedOpenTaskScreen = "FinishedOpenTaskScreen"
 
     //Doap Open Task
