@@ -2,6 +2,7 @@ package pl.marbirch.boilapp.ui.screens.quiz
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -26,7 +27,8 @@ fun StartScreen(
     modifier: Modifier = Modifier,
     onTheory: () -> Unit = {},
     onQuiz: () -> Unit = {},
-    onOpenTasks: () -> Unit = {}
+    onOpenTasks: () -> Unit = {},
+    onHistory: () -> Unit = {}
 ) {
     Surface(modifier = Modifier.fillMaxSize(), color = Cream) {
         Column (horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
@@ -47,9 +49,14 @@ fun StartScreen(
                 text = "Egzamin",
                 textStyle = Typography.labelLarge,
                 textColor = LightGray)
-            AppButton(modifier = Modifier.size(240.dp, 75.dp),
+            AppButton(modifier = Modifier.padding(bottom = 15.dp).size(240.dp, 75.dp),
                 onClick = onOpenTasks,
                 text = "Zadania otwarte",
+                textStyle = Typography.labelLarge,
+                textColor = LightGray)
+            AppButton(modifier = Modifier.size(240.dp, 75.dp),
+                onClick = onHistory,
+                text = "Historia Egzaminów",
                 textStyle = Typography.labelLarge,
                 textColor = LightGray)
         }

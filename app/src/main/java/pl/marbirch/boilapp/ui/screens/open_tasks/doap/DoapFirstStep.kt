@@ -230,10 +230,17 @@ fun DoapFirstStep(onCheckAns: (Boolean) -> Unit, modifier: Modifier = Modifier) 
                TextField(modifier = Modifier.size(70.dp, 53.dp), value = answer11, onValueChange = {answer11 = it})
            }
            Spacer(modifier = Modifier.padding(25.dp))
-           AppButton(modifier = Modifier.size(290.dp, 73.dp), text = "Sprawdź odpowiedź!", textColor = Color.LightGray, textStyle = Typography.headlineLarge.copy(fontSize = 20.sp), onClick = {
-               val isCorrect = (answer1 == correctAns[0] && answer2 == correctAns[1] && answer3 == correctAns[2] && answer4 == correctAns[3] && answer5 == correctAns[4] && answer6 == correctAns[5] && answer7 == correctAns[6] && answer8 == correctAns[7] && answer9 == correctAns[8] && answer10 == correctAns[9] && answer11 == correctAns[10])
-               onCheckAns(isCorrect)
-           })
+           AppButton(
+               modifier = Modifier.size(290.dp, 73.dp),
+               text = "Sprawdź odpowiedź!",
+               textColor = Color.LightGray,
+               textStyle = Typography.headlineLarge.copy(fontSize = 20.sp),
+               onClick = {
+                   val isCorrect =
+                       (answer1 == correctAns[0] && answer2 == correctAns[1] && answer3 == correctAns[2] && answer4 == correctAns[3] && answer5 == correctAns[4] && answer6 == correctAns[5] && answer7 == correctAns[6] && answer8 == correctAns[7] && answer9 == correctAns[8] && answer10 == correctAns[9] && answer11 == correctAns[10])
+                   onCheckAns(isCorrect)
+               },
+           )
            Spacer(modifier = Modifier.padding(25.dp))
        }
    }

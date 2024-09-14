@@ -7,8 +7,9 @@ import kotlinx.coroutines.flow.update
 import pl.marbirch.boilapp.data.model.QuizQuestions
 import pl.marbirch.boilapp.data.model.domain.QuizState
 import pl.marbirch.boilapp.data.model.domain.UserAnswer
+import pl.marbirch.boilapp.data.model.dto.DtoQuizHistory
 
-class QuizRepository {
+class QuizRepository(private val quizHistoryRepository: QuizHistoryRepository) {
 
     private val _quizState = MutableStateFlow<QuizState>(QuizState.NotStarted)
     private val leftQuestions: ArrayList<QuizQuestions> = ArrayList()
@@ -77,6 +78,13 @@ class QuizRepository {
         } else {
             val finishedQuizState = QuizState.Finished(correctAnsweredQuestions, displayedQuestions)
             updateQuizState(finishedQuizState)
+
+            val dtoQuizHistory = DtoQuizHistory(
+                quizResult = correctAnsweredQuestions,
+                maxQuizPoints = displayedQuestions,
+                timestamp = System.currentTimeMillis()
+            )
+            quizHistoryRepository.insertQuizHistory(dtoQuizHistory)
         }
     }
 }

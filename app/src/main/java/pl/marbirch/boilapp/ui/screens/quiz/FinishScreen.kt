@@ -28,7 +28,6 @@ import pl.marbirch.boilapp.data.model.domain.QuizState
 import pl.marbirch.boilapp.ui.default_component.AppButton
 import pl.marbirch.boilapp.ui.theme.Black
 import pl.marbirch.boilapp.ui.theme.Cream
-import pl.marbirch.boilapp.ui.theme.Gray
 import pl.marbirch.boilapp.ui.theme.LightGray
 import pl.marbirch.boilapp.ui.theme.Typography
 import kotlin.math.roundToInt

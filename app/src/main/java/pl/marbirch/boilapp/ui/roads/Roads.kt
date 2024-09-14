@@ -5,6 +5,7 @@ object Roads {
     const val quizScreen = "quizScreen"
     const val theoryScreen = "theoryScreen"
     const val openTasksScreen = "openTasksScreen"
+    const val historyScreen = "historyScreen"
 
     //Theory
     const val cpmMethod = "cpmMethod"

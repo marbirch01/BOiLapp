@@ -43,6 +43,7 @@ import pl.marbirch.boilapp.ui.screens.open_tasks.wiel.ZadWielFourthStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.wiel.ZadWielSecondStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.wiel.ZadWielSixthStep
 import pl.marbirch.boilapp.ui.screens.open_tasks.wiel.ZadWielThirdStep
+import pl.marbirch.boilapp.ui.screens.quiz.HistoryScreen
 import pl.marbirch.boilapp.ui.screens.quiz.QuizScreen
 import pl.marbirch.boilapp.ui.screens.quiz.StartScreen
 import pl.marbirch.boilapp.ui.screens.theory.CpmCostMethod
@@ -89,6 +90,9 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                 onOpenTasks = {
                     viewModel.menuEventHandler(MenuEvents.OpenTasks)
                     navigationController.navigate(Roads.openTasksScreen)
+                },
+                onHistory = {
+                    navigationController.navigate(Roads.historyScreen)
                 }
             )
         }
@@ -134,6 +138,10 @@ fun NavigationAppHost(modifier: Modifier = Modifier, viewModel: MainViewModel, n
                     navigationController.navigate(Roads.zadWielMethod)
                 }
             )
+        }
+        composable(Roads.historyScreen){
+            val historyState by viewModel.currentHistoryState.collectAsState()
+            HistoryScreen(quizHistoryList = historyState)
         }
         composable(Roads.cpmMethod){
             CpmMethod()

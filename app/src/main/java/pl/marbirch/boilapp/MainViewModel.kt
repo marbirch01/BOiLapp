@@ -11,13 +11,17 @@ import pl.marbirch.boilapp.data.model.domain.MenuEvents
 import pl.marbirch.boilapp.data.model.domain.QuizEvents
 import pl.marbirch.boilapp.data.model.domain.QuizState
 import pl.marbirch.boilapp.data.repository.QuestionRepository
+import pl.marbirch.boilapp.data.repository.QuizHistoryRepository
 import pl.marbirch.boilapp.data.repository.QuizRepository
 
 class MainViewModel(app: Application): AndroidViewModel(app){
-    private val quizRepository = QuizRepository()
+    private val quizHistoryRepository = QuizHistoryRepository(app)
+    private val quizRepository = QuizRepository(quizHistoryRepository)
     private val questionRepository = QuestionRepository(app)
 
     val currentQuizState = quizRepository.getQuizState().stateIn(viewModelScope, started = SharingStarted.WhileSubscribed(), initialValue = QuizState.NotStarted)
+
+    val currentHistoryState = quizHistoryRepository.getAllHistory().stateIn(scope = viewModelScope, started = SharingStarted.WhileSubscribed(), initialValue = emptyList())
 
     fun menuEventHandler(menuEvents: MenuEvents) = viewModelScope.launch {
         when(menuEvents){
