@@ -21,4 +21,5 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("pl.marbirch.boilapp", appContext.packageName)
     }
+
 }
